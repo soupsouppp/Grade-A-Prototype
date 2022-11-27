@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
@@ -54,10 +55,13 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("runing");
             animator.SetBool("isRunning", true);
+            
+
         }
         if (stopRunning)
         {
             animator.SetBool("isRunning", false);
+           
         }
 
 

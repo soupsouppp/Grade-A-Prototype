@@ -76,6 +76,11 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 
                 Destroy(item);
             }
+
+            if (thisItem.type == "weapon")
+            {
+
+            }
         }
     }
 }
