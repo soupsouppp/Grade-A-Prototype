@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class weaponSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         

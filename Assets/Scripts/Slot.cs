@@ -68,7 +68,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
             //check item type
 
-            //pure water
+            //LIQUIDS
             if(thisItem.type == "water")
             {
                 PlayerStats playerStats = player.GetComponent<PlayerStats>();
@@ -77,9 +77,29 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 Destroy(item);
             }
 
-            if (thisItem.type == "weapon")
+            //FOOD
+            if (thisItem.type == "food")
             {
+                PlayerStats playerStats = player.GetComponent<PlayerStats>();
+                playerStats.Drink(thisItem.foodUpvalue);
 
+                Destroy(item);
+            }
+
+            //WEAPONS
+            if (thisItem.type == "pistol")
+            {
+                Shooting shooting = player.GetComponent<Shooting>();
+                shooting.pistolEquipped = true;
+
+                Destroy(item);
+            }
+
+            if (thisItem.type == "rifle")
+            {
+                Shooting shooting = player.GetComponent<Shooting>();
+                shooting.rifleEquipped = true;
+                Destroy(item);
             }
         }
     }

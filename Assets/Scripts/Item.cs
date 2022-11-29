@@ -13,9 +13,7 @@ public class Item : MonoBehaviour
     //liquids
     public float waterUpvalue;
     //food
-
-    private bool pickedUp;
-    private bool eqiupped;
+    public float foodUpvalue;
 
 
     void Start()

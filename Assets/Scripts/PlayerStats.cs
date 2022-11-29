@@ -64,9 +64,9 @@ public class PlayerStats : MonoBehaviour
         water += waterUpvalue;
     }
 
-    public void Eat()
+    public void Eat(float foodUpvalue)
     {
-
+        food += foodUpvalue;
     }
 
 
