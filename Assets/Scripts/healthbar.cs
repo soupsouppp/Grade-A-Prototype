@@ -66,6 +66,7 @@ public class healthbar : MonoBehaviour
     {
         PlayerStats playerStat = player.GetComponent<PlayerStats>();
         waterBar.fillAmount = Mathf.Lerp(waterBar.fillAmount, playerStat.water / playerStat.maxThirst, lerpSpeed);
+        Debug.Log("filled water bar");
 
     }
 
@@ -87,6 +88,10 @@ public class healthbar : MonoBehaviour
 
         Color foodBarColor = Color.Lerp(Color.red, foodMin, (playerStat.food / playerStat.maxHunger));
         foodBar.color = foodBarColor;
+
+        Color waterBarColor = Color.Lerp(Color.red, Color.cyan, (playerStat.water / playerStat.maxThirst));
+        waterBar.color = waterBarColor;
+
     }
 }
 

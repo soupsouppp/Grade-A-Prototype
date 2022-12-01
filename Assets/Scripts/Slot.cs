@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    public GameObject Tooltip;
+    public TextMeshProUGUI tooltipText;
+    public RectTransform tpBG;
 
     public bool empty;
     private bool hovered;
@@ -51,12 +55,25 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerEnter(PointerEventData eventData)
     {
         hovered = true;
+
+        if (item)
+        {
+            
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         hovered = false;
     }
+
+
+    public void ShowTooltip(string tooltipString)
+    {
+
+    }
+
+
 
     //USE INVENTORY
     public void OnPointerClick(PointerEventData eventData)

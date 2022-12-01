@@ -10,6 +10,16 @@ public class Item : MonoBehaviour
     public string type;
     //food, water, heal, boost, weapon
 
+    //public enum types
+    //{
+    //    water,
+    //    food,
+    //    heal,
+    //    boost,
+    //    pistol,
+    //    rifle
+    //}
+
     //liquids
     public float waterUpvalue;
     //food
