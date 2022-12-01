@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public Animator animator;
 
     public GameObject inventory;
     public GameObject slotHolder;
@@ -53,11 +54,13 @@ public class Inventory : MonoBehaviour
             Cursor.visible = false;
         }
 
+        //ITEM PICK UP
         if (Input.GetKeyDown(KeyCode.E) && triggerEntered == true && inRange)
         {
-            
-            
+
+            animator.SetTrigger("PickUp");
             AddItem(itemPickedUp);
+            
         }
 
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-
+using System.Xml.Serialization;
 
 public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -20,7 +20,12 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     private GameObject player;
 
-    
+    private void Awake()
+    {
+        tpBG = Tooltip.GetComponent<RectTransform>();
+        tooltipText = Tooltip.GetComponentInChildren<TextMeshProUGUI>();
+
+    }
     void Start()
     {
         //empty = true;
@@ -34,6 +39,10 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     void Update()
     {
+        tpBG = Tooltip.GetComponent<RectTransform>();
+        tooltipText = Tooltip.GetComponentInChildren<TextMeshProUGUI>();
+
+
         if (item)
         {
             empty = false;
@@ -55,22 +64,62 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerEnter(PointerEventData eventData)
     {
         hovered = true;
+        //Tooltip.SetActive(true);
 
         if (item)
         {
+            Item thisItem = item.GetComponent<Item>();
+
+            tpBG = Tooltip.GetComponent<RectTransform>();
+            tooltipText = Tooltip.GetComponent<TextMeshProUGUI>();
+
+
+            //check item type
+
             
+            if (thisItem.type == "pistol")
+            {
+                ShowTooltip("A pistol the school guards carry. \n(Damage: 15)");
+            }
+
+            if (thisItem.type == "water")
+            {
+                ShowTooltip("Pure water, the best it could get. \n(Water +20)");
+
+            }
+
+            if (thisItem.type == "juice")
+            {
+                ShowTooltip("Juice, tasty but doesn't relieve much thirst. \n(Water +10) \n(Food +5)");
+
+            }
+
+            if (thisItem.type == "heal")
+            {
+                ShowTooltip("Medical Syringe, mostly found in school nurse office and supply rooms. \n(HP +20)");
+            }
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         hovered = false;
+        Tooltip.SetActive(false);
     }
 
 
     public void ShowTooltip(string tooltipString)
     {
+        Tooltip.SetActive(true);
+        tooltipText.text = tooltipString;
+        //Vector2 bgSize = new Vector2(tooltipText.preferredWidth, tooltipText.preferredHeight);
+        //tpBG.sizeDelta = bgSize;
 
+    }
+
+    public void HideTooltip()
+    {
+        Tooltip.SetActive(false);
     }
 
 
