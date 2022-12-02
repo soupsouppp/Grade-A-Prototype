@@ -167,6 +167,15 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 shooting.rifleEquipped = true;
                 Destroy(item);
             }
+
+            //OTHER
+            if (thisItem.type == "heal")
+            {
+                PlayerStats playerStats = player.GetComponent<PlayerStats>();
+                playerStats.Heal(thisItem.HPUpValue);
+
+                Destroy(item);
+            }
         }
     }
 }

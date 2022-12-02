@@ -55,12 +55,13 @@ public class Inventory : MonoBehaviour
         }
 
         //ITEM PICK UP
-        if (Input.GetKeyDown(KeyCode.E) && triggerEntered == true && inRange)
+        if (triggerEntered == true && inRange)
         {
-
-            animator.SetTrigger("PickUp");
-            AddItem(itemPickedUp);
-            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //animator.SetTrigger("PickUp");
+                AddItem(itemPickedUp);
+            }
         }
 
     }

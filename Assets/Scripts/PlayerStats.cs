@@ -80,11 +80,11 @@ public class PlayerStats : MonoBehaviour
     }
 
     //healing 
-    public void heal(float healpoints)
+    public void Heal(float HPUpValue)
     {
         if (health < maxHP)
         {
-            health += healpoints;
+            health += HPUpValue;
         }
     }
 
@@ -97,5 +97,5 @@ public class PlayerStats : MonoBehaviour
 
 
     //testing
-    
+
 }

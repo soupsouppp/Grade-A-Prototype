@@ -24,7 +24,7 @@ public class Item : MonoBehaviour
     public float waterUpvalue;
     //food
     public float foodUpvalue;
-
+    public float HPUpValue;
 
     void Start()
     {
