@@ -47,11 +47,13 @@ public class Inventory : MonoBehaviour
             //access inventory
             inventory.SetActive(true);
             Cursor.visible = true;
+            Debug.Log("curser on in inventory");
         }
         else
         {
             inventory.SetActive(false);
             Cursor.visible = false;
+            Debug.Log("curser off not in inventory");
         }
 
         //ITEM PICK UP

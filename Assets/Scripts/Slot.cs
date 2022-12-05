@@ -10,7 +10,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 {
     public GameObject Tooltip;
     public TextMeshProUGUI tooltipText;
-    public RectTransform tpBG;
+    private RectTransform tpBG;
 
     public bool empty;
     private bool hovered;
@@ -48,7 +48,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             empty = false;
             itemIcon = item.GetComponent<Item>().icon;
             this.GetComponent<Image>().sprite = itemIcon;
-            Debug.Log("updating inventory");
+            //Debug.Log("updating inventory");
         }
         else
         {
@@ -112,8 +112,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         Tooltip.SetActive(true);
         tooltipText.text = tooltipString;
-        //Vector2 bgSize = new Vector2(tooltipText.preferredWidth, tooltipText.preferredHeight);
-        //tpBG.sizeDelta = bgSize;
+        
 
     }
 

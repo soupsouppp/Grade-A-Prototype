@@ -59,14 +59,14 @@ public class healthbar : MonoBehaviour
     {
         PlayerStats playerStat = player.GetComponent<PlayerStats>();
         healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, playerStat.health / playerStat.maxHP, lerpSpeed);
-        Debug.Log("filled hp bar");
+        //Debug.Log("filled hp bar");
     }
 
     private void fillWater()
     {
         PlayerStats playerStat = player.GetComponent<PlayerStats>();
         waterBar.fillAmount = Mathf.Lerp(waterBar.fillAmount, playerStat.water / playerStat.maxThirst, lerpSpeed);
-        Debug.Log("filled water bar");
+        //Debug.Log("filled water bar");
 
     }
 
@@ -74,7 +74,7 @@ public class healthbar : MonoBehaviour
     {
         PlayerStats playerStat = player.GetComponent<PlayerStats>();
         foodBar.fillAmount = Mathf.Lerp(foodBar.fillAmount, playerStat.food / playerStat.maxHunger, lerpSpeed);
-        Debug.Log("filled food bar");
+        //Debug.Log("filled food bar");
 
     }
 
@@ -89,7 +89,7 @@ public class healthbar : MonoBehaviour
         Color foodBarColor = Color.Lerp(Color.red, foodMin, (playerStat.food / playerStat.maxHunger));
         foodBar.color = foodBarColor;
 
-        Color waterBarColor = Color.Lerp(Color.red, Color.cyan, (playerStat.water / playerStat.maxThirst));
+        Color waterBarColor = Color.Lerp(Color.red, Color.green, (playerStat.water / playerStat.maxThirst));
         waterBar.color = waterBarColor;
 
     }

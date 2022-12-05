@@ -1,31 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.UI;
+
 
 public class Raycast : MonoBehaviour
 {
-    //public bool inRange;
+    public GameObject ChatCanvas;
+    public GameObject player;
+
+    private bool ChatOpened;
+    public bool inChatRange;
 
 
-    // Start is called before the first frame update
     void Start()
     {
+        ChatOpened = false;
 
     }
 
-    // Update is called once per frame
+
     public void Update()
     {
+        //freeze player movement and inventory while chatting
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        Inventory inventory = player.GetComponent<Inventory>();
+
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, 8))
         {
-            Inventory inventory = gameObject.GetComponentInParent<Inventory>();
+            //Inventory inventory = gameObject.GetComponentInParent<Inventory>();
 
             if (hit.transform.tag == "Item")
             {
                 inventory.inRange = true;
-                Debug.Log("Raycast in range");
+                //Debug.Log("Raycast in range");
 
             }
             else
@@ -34,21 +44,48 @@ public class Raycast : MonoBehaviour
             }
 
 
-            //if (hit.collider.gameObject.tag == "Item" && Input.GetKeyDown(KeyCode.E))
-            //{
-
-            //    inventory.itemPickedUp = hit.transform.gameObject;
-            //    inventory.AddItem(inventory.itemPickedUp);
-            //    Debug.Log("get item");
-            //    //inventory.itemAdded = true;
-
-
-      
+            if (hit.transform.tag == "NPC")
+            {
+                inChatRange = true;
 
             }
+            else
+            {
+                inChatRange = false;
+            }
+
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.F) && inChatRange)
+        {
+            ChatOpened = !ChatOpened;
+
+
+        }
+
+        if (ChatOpened)
+        {
+            //access inventory
+            ChatCanvas.SetActive(true);
+            Cursor.visible = true;
+            Debug.Log("curser on in chat");
+            playerController.enabled = false;
+            inventory.enabled = false;
+        }
+        else
+        {
+            ChatCanvas.SetActive(false);
+            Cursor.visible = false;
+            Debug.Log("curser off not in chat");
+            playerController.enabled = true;
+            inventory.enabled = true;
         }
 
 
     }
+
+
+}
 
 
