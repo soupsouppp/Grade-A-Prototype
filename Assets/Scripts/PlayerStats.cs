@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,22 @@ public class PlayerStats : MonoBehaviour
 
     public bool dead;
 
+    public GameObject ChoiceScript;
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "DormDoor")
+        {
+            Door door = other.GetComponent<Door>();
+            Choice choice = ChoiceScript.GetComponent<Choice>();
+
+            if(choice.signedIn == true)
+            {
+                door.canBeOpen = true;
+            }
+        }
+    }
+
 
     public void Start()
     {
@@ -22,9 +39,22 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+
+
     public void Update()
     {
         
+        
+
+
+
+
+
+
+
+
+
+
         //survival 
         if (!dead)
         {

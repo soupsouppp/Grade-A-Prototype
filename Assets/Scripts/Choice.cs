@@ -12,18 +12,25 @@ public class Choice : MonoBehaviour
     public GameObject Choice1;
     public GameObject Choice2;
 
+    public GameObject DormDoor;
+
+
     public int choiceMade;
+
+    public bool signedIn;
 
     public void Dialog1()
     {
-        Text.text = "Student Name: Xena \nGrade: 11 \nSignning in to the female dorm at 7:47PM.";
+        Text.text = "Student Name: Xena Valdez \nAge: 17 \nGrade: 11th \nSignning in to the female dorm at 8:50 PM, please head upstairs to your dorm.";
         choiceMade = 1;
+        signedIn = true;
     }
 
     public void Dialog2()
     {
-        Text.text = "See you next time.";
+        Text.text = "I will only sign you in because I know it is hard to be a women miss Xena. You have 10 minutes, the gate will unlock for you when you return. Do not miss the attendance check.";
         choiceMade = 2;
+        signedIn = true;
     }
     
     
